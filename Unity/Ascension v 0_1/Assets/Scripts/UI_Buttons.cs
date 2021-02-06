@@ -19,6 +19,6 @@ public class UI_Buttons : MonoBehaviour
 
     public void NuevoJuego()
     {
-        SceneManager.LoadScene("Escena4");
+        SceneManager.LoadScene("Demo");
     }
 }
