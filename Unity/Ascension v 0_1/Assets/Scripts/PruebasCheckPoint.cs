@@ -29,7 +29,7 @@ public class PruebasCheckPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoverPersonaje();
+        //MoverPersonaje();
 
         //Si pulsamos el botón de disparo, simulamos que nos hemos muerto
         if(Input.GetKeyDown("space"))
@@ -41,7 +41,7 @@ public class PruebasCheckPoint : MonoBehaviour
         }
     }
 
-    void MoverPersonaje()
+    /*void MoverPersonaje()
     {
         float desplX = Input.GetAxis("Horizontal");
         float desplZ = Input.GetAxis("Vertical");
@@ -50,7 +50,7 @@ public class PruebasCheckPoint : MonoBehaviour
         transform.Translate(Vector3.forward * desplZ * moveSpeed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider other)
+   */ private void OnTriggerEnter(Collider other)
     {
         //Comprobamos si el punto de control alcanzado es el siguiente en la lista
         if (other.name == "CheckPoint" + NextCheckPoint)
