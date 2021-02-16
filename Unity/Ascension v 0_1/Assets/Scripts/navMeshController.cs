@@ -6,10 +6,11 @@ using UnityEngine.AI;
 
 public class navMeshController : MonoBehaviour
 {
-    private Animator anim;
+    public Animator animator;
+    private Animation anim;
     public Transform target; //Empty que seguira nuestro objetivo
     private NavMeshAgent agente;
-    public GameObject raycast;
+    public GameObject target2;
     public Light spotlight;
     public float viewDistance;
     public LayerMask viewMask;
@@ -23,9 +24,10 @@ public class navMeshController : MonoBehaviour
         originalSpotlightColour = spotlight.color;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         viewAngle = spotlight.spotAngle;
+        target2 = GameObject.Find("Setdestination");
 
         agente = GetComponent<NavMeshAgent>();
-
+        anim = target2.GetComponent<Animation>();
     }
 
     bool CanSeePlayer()
@@ -51,10 +53,14 @@ public class navMeshController : MonoBehaviour
         if (CanSeePlayer())
         {
             spotlight.color = Color.red;
+            anim.enabled = false;
+            target = player.transform;
+            animator.SetBool("Correr", true);
         }
         else
         {
             spotlight.color = originalSpotlightColour;
+            Invoke("NotSee", 3.0f);
         }
         agente.destination = target.position;
     }
@@ -65,5 +71,10 @@ public class navMeshController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position, transform.forward * viewDistance);
     }
-
+    void NotSee()
+    {
+        anim.enabled = true;
+        target = target2.transform;
+        animator.SetBool("Correr", false);
+    }
 }
