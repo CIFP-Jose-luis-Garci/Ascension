@@ -12,13 +12,23 @@ public class UI_Buttons : MonoBehaviour
         SceneManager.LoadScene("Escena2");
     }
 
+    public void VolverMenu()
+    {
+        SceneManager.LoadScene("Escena1");
+    }
+
     public void Ajustes()
     {
         SceneManager.LoadScene("Escena3");
     }
 
-    public void NuevoJuego()
+    public void Continuar()
     {
-        SceneManager.LoadScene("Demo");
+        SceneManager.LoadScene("EscenaAscensor");
+    }
+
+    public void Coleccionables()
+    {
+        SceneManager.LoadScene("Escena4");
     }
 }
