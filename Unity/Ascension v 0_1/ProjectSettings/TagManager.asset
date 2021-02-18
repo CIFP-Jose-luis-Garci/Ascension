@@ -32,6 +32,7 @@ TagManager:
   - AIAction
   - enemigo
   - Planta1
+  - clip_audio
   layers:
   - Default
   - TransparentFX
