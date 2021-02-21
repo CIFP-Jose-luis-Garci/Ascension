@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class cameraScript : MonoBehaviour
 {
@@ -17,12 +19,16 @@ public class cameraScript : MonoBehaviour
     private bool pillado = false; //booleana para cuando te pillan por defecto en false
     public Transform objectiveCamera; /*objetivo de la camara que es empty en el personaje 
     para arreglar bug de camara mirando a el suelo al hacer el lookAT*/
+    public Slider slider;
+    public Canvas tehanpillado;
+    float progreso;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        tehanpillado.enabled = false;
         spotlight2.enabled = false;
         originalSpotlightColour = spotlight.color;
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -59,12 +65,21 @@ public class cameraScript : MonoBehaviour
             spotlight2.enabled = true; //activa luz de atrapado
             spotlight2.color = Color.red; //cambia en rojo la luz de atrapado
             pillado = true; //pone en true la booleana pillado
+            StopCoroutine("sliderpilladoDown");
+            StartCoroutine("sliderpilladoUp");
+
+
         }
         else
         {
+            StopCoroutine("sliderpilladoUp");
+            
+
             spotlight2.color = originalSpotlightColour; //coloca la luz de su posicion original
+            
             if (pillado == true)//si la variable es true al salir del area de vision y esperar 2segundos comienza el invoke
             {
+                
                 Invoke("NotSeen", 2.0f);
             }
         }
@@ -84,5 +99,39 @@ public class cameraScript : MonoBehaviour
         anim.enabled = true;
         anim2.enabled = true;
         pillado = false;
+        StartCoroutine("sliderpilladoDown");
+
+
+    }
+
+    IEnumerator sliderpilladoUp()
+    {
+        for (float n = 0.3f; n<1f; n++)
+        {
+            slider.value = progreso;
+            progreso += n * Time.deltaTime;
+            if (progreso > 0.99)
+            {
+                tehanpillado.enabled = true;
+                //Time.timeScale = 0f; Para parar el juego, falta ver si funciona el canvas con este codigo
+            }
+        }
+        yield return null;
+    }
+
+    IEnumerator sliderpilladoDown()
+    {
+        
+        if(progreso > 0.05f)
+        {
+            for (float n = 1f; n > 0.01f; n--)
+            {
+                
+                slider.value = progreso;
+                progreso -= n * Time.deltaTime;
+            }
+        }
+        
+        yield return null;
     }
 }

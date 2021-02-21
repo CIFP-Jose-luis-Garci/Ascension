@@ -2825,6 +2825,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2126687017}
   target: {fileID: 155160420}
+  agente: {fileID: 2126687020}
   target2: {fileID: 155160416}
   spotlight: {fileID: 1624988151}
   viewDistance: 7

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 
 public class navMeshController : MonoBehaviour
@@ -9,7 +10,7 @@ public class navMeshController : MonoBehaviour
     public Animator animator;
     private Animation anim;
     public Transform target; //Empty que seguira nuestro objetivo
-    private NavMeshAgent agente;
+    public NavMeshAgent agente;
     public GameObject target2;
     public Light spotlight;
     public float viewDistance;
@@ -17,6 +18,10 @@ public class navMeshController : MonoBehaviour
     private float viewAngle;
     public Transform player;
     Color originalSpotlightColour;
+    public Slider slider;
+    public Canvas tehanpillado;
+    float progreso;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +32,8 @@ public class navMeshController : MonoBehaviour
         target2 = GameObject.Find("Setdestination");
 
         agente = GetComponent<NavMeshAgent>();
+        
+
         anim = target2.GetComponent<Animation>();
     }
 
@@ -50,19 +57,37 @@ public class navMeshController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        agente.destination = target.position;
+        
         if (CanSeePlayer())
         {
+            
+                
             spotlight.color = Color.red;
             anim.enabled = false;
             target = player.transform;
             animator.SetBool("Correr", true);
+            for (float n = 0.6f; n < 1f; n++)
+            {
+                slider.value = progreso;
+                progreso += n * Time.deltaTime;
+                if (progreso > 0.99)
+                {
+                    tehanpillado.enabled = true;
+                    //Time.timeScale = 0f; Para parar el juego, falta ver si funciona el canvas con este codigo
+                }
+            }
+
         }
         else
         {
+           
             spotlight.color = originalSpotlightColour;
             Invoke("NotSee", 3.0f);
+            
+
         }
-        agente.destination = target.position;
+
     }
 
     void OnDrawGizmos()
@@ -76,5 +101,14 @@ public class navMeshController : MonoBehaviour
         anim.enabled = true;
         target = target2.transform;
         animator.SetBool("Correr", false);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            slider.value = 1f;
+            tehanpillado.enabled = true;
+        }
+
     }
 }
