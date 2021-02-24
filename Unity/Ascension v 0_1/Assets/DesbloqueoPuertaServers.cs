@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class DesbloqueoPuertaServers : MonoBehaviour
 {
-    [SerializeField] GameObject bloqueopuerta;
+    [SerializeField] Animator bloqueopuerta;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip sonidoreactivadorpuerta;
+
+    
     // Start is called before the first frame update
     void Start()
     {
         
+        bloqueopuerta.SetBool("PuertaAbierta", true);
     }
 
     // Update is called once per frame
@@ -23,7 +26,7 @@ public class DesbloqueoPuertaServers : MonoBehaviour
     {
         if (Input.GetButtonDown("X"))
         {
-            bloqueopuerta.SetActive(false);
+            bloqueopuerta.SetBool("PuertaAbierta", false);
             print("funciono");
             audioSource.PlayOneShot(sonidoreactivadorpuerta, 0.2f);
         }
