@@ -9,13 +9,15 @@ public class ServerScript : MonoBehaviour
     public float timerCuentaAtras;
     public int segundos;
     [SerializeField] GameObject FinalDelNivel;
+    [SerializeField] Animator animatorPuertaCerrada;
     public float prueba;
 
     // Start is called before the first frame update
     void Start()
     {
        estaRangoServer = false;
-       FinalDelNivel.SetActive(true);
+       FinalDelNivel.SetActive(false);
+       animatorPuertaCerrada.SetBool("PuertaCuarentena", false);
         
     }
 
@@ -68,10 +70,10 @@ public class ServerScript : MonoBehaviour
     void FinalNivel()
     
     {
-        if(segundos <= 25)
+        if(segundos >= 25)
         {
             FinalDelNivel.SetActive(true);
-
+            animatorPuertaCerrada.SetBool("PuertaCuarentena", false);
         }
     }
    
@@ -84,8 +86,10 @@ public class ServerScript : MonoBehaviour
         while(segundos < 25)
        
         {
+            
             timerCuentaAtras += Time.deltaTime;
             segundos = (int)timerCuentaAtras % 60;
+            animatorPuertaCerrada.SetBool("PuertaCuarentena", true);
             print("Funciono");
             yield return new WaitForSeconds(0.0001f);
         }
