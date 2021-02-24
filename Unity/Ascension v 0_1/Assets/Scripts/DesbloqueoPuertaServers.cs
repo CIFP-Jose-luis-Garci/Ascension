@@ -26,26 +26,32 @@ public class DesbloqueoPuertaServers : MonoBehaviour
         if (Input.GetButtonDown("X") && estadentroServer == true)
         {
            animacionPuerta.SetBool("PuertaAbierta", true);
-            print("funciono");
             audioSource.PlayOneShot(sonidoreactivadorpuerta, 0.2f);
             LuzAbiertaServer.SetActive(true);
             LuzCerradaServer.SetActive(false);
         }
-        print(estadentroServer);
+        
     }
 
-    void OnTriggerEnter(Collider Server)
+void OnTriggerEnter(Collider target)
 
     {
-        print("Estas entrando en el server");
-        estadentroServer = false;
+        if(target.gameObject.tag == "Player")
+        {
+            estadentroServer = true;
+        }
 
     }
-    void OnTriggerExit(Collider Server)
-
+    void OnTriggerExit(Collider target)
     {
+
+    if(target.gameObject.tag == "Player")
+        
+        {
+
         estadentroServer = false;
 
+        }
     }
 
 }

@@ -25,7 +25,6 @@ public class PuertaDespacho : MonoBehaviour
         if (Input.GetButtonDown("X") && estadentro == true)
         {
             bloqueopuerta.SetActive(false);
-            print("funciono");
             audioSource.PlayOneShot(sonidoreactivadorpuerta, 0.2f);
             LuzAbiertaDespachos.SetActive(true);
             LuzCerradaDespachos.SetActive(false);
@@ -33,19 +32,24 @@ public class PuertaDespacho : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider Despacho)
+    void OnTriggerEnter(Collider target)
 
     {
-        print("Estas entrando en el despacho");
-        estadentro = true;
+        if(target.gameObject.tag == "Player")
+        {
+            estadentro = true;
+        }
 
     }
-    void OnTriggerExit(Collider Despacho)
-
+    void OnTriggerExit(Collider target)
     {
+
+    if(target.gameObject.tag == "Player")
+        
+        {
+
         estadentro = false;
 
+        }
     }
-
-
 }
