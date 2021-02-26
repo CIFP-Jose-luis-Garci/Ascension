@@ -6,24 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Demo1.unity
-    guid: 5363c4650c006d0469bf3eacd9da8533
-  - enabled: 1
     path: Assets/Scenes/Escena1.unity
     guid: 9327fda2437f8ea4e80766820ad61049
   - enabled: 1
     path: Assets/Scenes/Escena2.unity
     guid: b3ce3858696079843b5f322ffa4bdf19
   - enabled: 1
-    path: Assets/Scenes/EscenaAscensor.unity
-    guid: ba2816d3cee01df4fbb724f597ca55aa
+    path: Assets/Scenes/Escena3.unity
+    guid: 17af3e72efc6e1545acf5bab229461af
   - enabled: 1
     path: Assets/Scenes/Escena4.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Escena3.unity
-    guid: 17af3e72efc6e1545acf5bab229461af
+    path: Assets/Scenes/EscenaAscensor.unity
+    guid: ba2816d3cee01df4fbb724f597ca55aa
   - enabled: 1
-    path: Assets/Scenes/PruebasMario.unity
-    guid: f6136ccf518ced343b2628b6daf41ea5
+    path: Assets/Scenes/Demo1.unity
+    guid: 5363c4650c006d0469bf3eacd9da8533
   m_configObjects: {}
