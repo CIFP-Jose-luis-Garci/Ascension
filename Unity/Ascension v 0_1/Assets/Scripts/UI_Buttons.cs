@@ -5,7 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class UI_Buttons : MonoBehaviour
 {
+    public GameObject player;
+    public PruebasCheckPoint pruebas;
+
     // Start is called before the first frame update
+    public void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<PruebasCheckPoint>();
+    }
 
     public void StartGame()
     {
@@ -30,5 +38,10 @@ public class UI_Buttons : MonoBehaviour
     public void Coleccionables()
     {
         SceneManager.LoadScene("Escena4");
+    }
+    public void Reintentar()
+    {
+        pruebas.Die();
+        
     }
 }

@@ -113,7 +113,8 @@ public class cameraScript : MonoBehaviour
             if (progreso > 0.99)
             {
                 tehanpillado.enabled = true;
-                //Time.timeScale = 0f; Para parar el juego, falta ver si funciona el canvas con este codigo
+                Time.timeScale = 0;
+                
             }
         }
         yield return null;

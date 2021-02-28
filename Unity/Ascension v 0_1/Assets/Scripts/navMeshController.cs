@@ -106,8 +106,10 @@ public class navMeshController : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            
             slider.value = 1f;
             tehanpillado.enabled = true;
+            Time.timeScale = 0;
         }
 
     }

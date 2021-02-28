@@ -33,6 +33,7 @@ TagManager:
   - enemigo
   - Planta1
   - clip_audio
+  - CheckPoint
   layers:
   - Default
   - TransparentFX

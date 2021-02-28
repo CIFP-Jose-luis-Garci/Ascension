@@ -29,16 +29,7 @@ public class PruebasCheckPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //MoverPersonaje();
-
-        //Si pulsamos el botón de disparo, simulamos que nos hemos muerto
-        if(Input.GetKeyDown("space"))
-        {
-            //Ejecutamos el método Die, pero esperando dos segundos
-            print("Te has muerto, espera 2 segundos para volver a comenzar");
-            textoInfo.text = "MUERTO. En 2 segundos irás al punto de ocntrol: " + CurrentCheckPoint;
-            Invoke("Die", 2f);
-        }
+        
     }
 
     /*void MoverPersonaje()
@@ -64,7 +55,7 @@ public class PruebasCheckPoint : MonoBehaviour
         }
     }
 
-    void Die()
+   public void Die()
     {
         //Si el personaje muere, lo devolvemos a la posición del último checkpoint alcanzado
         //Para ello, usamos el GameObject almacenado en el punto concreto del Array
@@ -73,6 +64,7 @@ public class PruebasCheckPoint : MonoBehaviour
         //Lo llevamos allí (habrá que ver qué pasa con la cámara)
         transform.position = RestartPos;
         textoInfo.text = "Punto de control actual: " + CurrentCheckPoint;
+        Time.timeScale = 1;
 
     }
 }
