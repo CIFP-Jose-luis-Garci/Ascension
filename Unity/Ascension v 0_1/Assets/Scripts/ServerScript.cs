@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ServerScript : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class ServerScript : MonoBehaviour
     public int segundos;
     [SerializeField] GameObject FinalDelNivel;
     [SerializeField] Animator animatorPuertaCerrada;
+    [SerializeField] Image usb;
     public float prueba;
 
     // Start is called before the first frame update
@@ -18,7 +20,7 @@ public class ServerScript : MonoBehaviour
        estaRangoServer = false;
        FinalDelNivel.SetActive(false);
        animatorPuertaCerrada.SetBool("PuertaCuarentena", false);
-        
+       usb.enabled = false;
     }
 
     // Update is called once per frame
@@ -70,10 +72,11 @@ public class ServerScript : MonoBehaviour
     void FinalNivel()
     
     {
-        if(segundos >= 25)
+        if(segundos >= 15)
         {
             FinalDelNivel.SetActive(true);
             animatorPuertaCerrada.SetBool("PuertaCuarentena", false);
+            usb.enabled = true;
         }
     }
    
@@ -83,14 +86,13 @@ public class ServerScript : MonoBehaviour
     {
              
 
-        while(segundos < 25)
+        while(segundos < 15)
        
         {
             
             timerCuentaAtras += Time.deltaTime;
             segundos = (int)timerCuentaAtras % 60;
             animatorPuertaCerrada.SetBool("PuertaCuarentena", true);
-            print("Funciono");
             yield return new WaitForSeconds(0.0001f);
         }
 
