@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FinalDelNivel : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class FinalDelNivel : MonoBehaviour
         {
             
            print("Has acabado el juego");
-            
+            SceneManager.LoadScene("Final");
         }
 
     }

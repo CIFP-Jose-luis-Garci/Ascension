@@ -58,6 +58,7 @@ public class PruebasCheckPoint : MonoBehaviour
 
         pilladoCanvas.enabled = false;
         Time.timeScale = 1;
+        eventsystem.SetActive(false);
         slidervision.value = 0f;
 
     }

@@ -12,11 +12,13 @@ public class ServerScript : MonoBehaviour
     [SerializeField] GameObject FinalDelNivel;
     [SerializeField] Animator animatorPuertaCerrada;
     [SerializeField] Image usb;
+    [SerializeField] GameObject USBAnim;
     public float prueba;
 
     // Start is called before the first frame update
     void Start()
     {
+        USBAnim.SetActive(false);
        estaRangoServer = false;
        FinalDelNivel.SetActive(false);
        animatorPuertaCerrada.SetBool("PuertaCuarentena", false);
@@ -66,6 +68,7 @@ public class ServerScript : MonoBehaviour
         if(Input.GetButtonDown("X") && estaRangoServer == true && segundos == 0)  
         {
            StartCoroutine("CuentaAtras");
+           USBAnim.SetActive(true);
         }
     }  
 
@@ -77,6 +80,7 @@ public class ServerScript : MonoBehaviour
             FinalDelNivel.SetActive(true);
             animatorPuertaCerrada.SetBool("PuertaCuarentena", false);
             usb.enabled = true;
+            USBAnim.SetActive(false);
         }
     }
    
