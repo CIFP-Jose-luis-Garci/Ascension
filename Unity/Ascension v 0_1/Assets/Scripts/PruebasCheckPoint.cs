@@ -13,17 +13,19 @@ public class PruebasCheckPoint : MonoBehaviour
     //Punto de control en el que estamos ahora mismo
     [SerializeField] int CurrentCheckPoint;
     [SerializeField] int NextCheckPoint;
-
-    //Texto
-    [SerializeField] Text textoInfo;
+    public Canvas pilladoCanvas;
+    public GameObject eventsystem;
+    public Slider slidervision;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         CurrentCheckPoint = 0;
         NextCheckPoint = CurrentCheckPoint + 1;
+        
 
-        textoInfo.text = "Punto de control actual: " + CurrentCheckPoint; 
+
     }
 
     // Update is called once per frame
@@ -32,26 +34,16 @@ public class PruebasCheckPoint : MonoBehaviour
         
     }
 
-    /*void MoverPersonaje()
-    {
-        float desplX = Input.GetAxis("Horizontal");
-        float desplZ = Input.GetAxis("Vertical");
-
-        transform.Translate(Vector3.right * desplX * moveSpeed * Time.deltaTime);
-        transform.Translate(Vector3.forward * desplZ * moveSpeed * Time.deltaTime);
-    }
-
-   */ private void OnTriggerEnter(Collider other)
+     private void OnTriggerEnter(Collider other)
     {
         //Comprobamos si el punto de control alcanzado es el siguiente en la lista
         if (other.name == "CheckPoint" + NextCheckPoint)
         {
-            print("Alcanzado siguiente punto de control");
             //Actualizamos los valores
             CurrentCheckPoint = NextCheckPoint;
             NextCheckPoint = CurrentCheckPoint + 1;
 
-            textoInfo.text = "Punto de control actual: " + CurrentCheckPoint;
+           
         }
     }
 
@@ -63,8 +55,10 @@ public class PruebasCheckPoint : MonoBehaviour
 
         //Lo llevamos allí (habrá que ver qué pasa con la cámara)
         transform.position = RestartPos;
-        textoInfo.text = "Punto de control actual: " + CurrentCheckPoint;
+
+        pilladoCanvas.enabled = false;
         Time.timeScale = 1;
+        slidervision.value = 0f;
 
     }
 }

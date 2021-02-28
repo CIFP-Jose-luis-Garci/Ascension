@@ -12,7 +12,7 @@ public class UI_Buttons : MonoBehaviour
     public void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<PruebasCheckPoint>();
+        //player.GetComponent<PruebasCheckPoint>();
     }
 
     public void StartGame()

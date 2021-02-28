@@ -31,7 +31,7 @@ public class ServerScript : MonoBehaviour
 
        FinalNivel();
        
-       print(segundos);
+       //print(segundos);
       
     }
 
