@@ -12,13 +12,13 @@ public class LlaveDesbloqueoScript : MonoBehaviour
     public SphereCollider tarjetacollider;
     public AudioSource audioSource;
     public AudioClip sonidorecoleccion;
-    [SerializeField] Image LogoTarjeta;
+   [SerializeField] Image LogoTarjeta;
    
 
     // Start is called before the first frame update
     void Start()
     {
-        LogoTarjeta.enabled = false;
+      LogoTarjeta.enabled = false;
       
     }
 
@@ -36,7 +36,7 @@ public class LlaveDesbloqueoScript : MonoBehaviour
             audioSource.PlayOneShot(sonidorecoleccion, 1f);
             luztarjeta.SetActive(false);
             tarjetacollider.enabled = false;
-            LogoTarjeta.enabled = true;
+          LogoTarjeta.enabled = true;
             
             //Bloqueo de puerta.
             
