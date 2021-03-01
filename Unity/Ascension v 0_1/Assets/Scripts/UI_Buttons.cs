@@ -20,9 +20,10 @@ public class UI_Buttons : MonoBehaviour
         SceneManager.LoadScene("Escena2");
     }
 
-    public void VolverMenu()
+    public void Salir()
     {
-        SceneManager.LoadScene("Escena1");
+         Debug.Log("QUIT!");
+         Application.Quit();
     }
 
     public void Ajustes()
