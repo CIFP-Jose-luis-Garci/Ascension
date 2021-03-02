@@ -21,7 +21,10 @@ public class navMeshController1 : MonoBehaviour
     public Slider slider;
     public Canvas tehanpillado;
     float progreso;
-    public GameObject eventSystem;
+    public GameObject eventSystemPillado;
+    public GameObject eventSystemContinue;
+    public GameObject Hud;
+
 
 
     // Start is called before the first frame update
@@ -31,7 +34,7 @@ public class navMeshController1 : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         viewAngle = spotlight.spotAngle;
         //target2 = GameObject.Find("SetdestinationGuard2");
-        eventSystem.SetActive(false);
+        eventSystemPillado.SetActive(false);
         agente = GetComponent<NavMeshAgent>();
         
 
@@ -111,7 +114,9 @@ public class navMeshController1 : MonoBehaviour
             
             slider.value = 1f;
             tehanpillado.enabled = true;
-            eventSystem.SetActive(true);
+            eventSystemContinue.SetActive(false);
+            Hud.SetActive(false);
+            eventSystemPillado.SetActive(true);
 
 
             Time.timeScale = 0;

@@ -21,7 +21,10 @@ public class navMeshController : MonoBehaviour
     public Slider slider;
     public Canvas tehanpillado;
     float progreso;
-    public GameObject eventSystem;
+    public GameObject eventSystemPillado;
+    public GameObject eventSystemContinue;
+    public GameObject Hud;
+
 
 
 
@@ -32,7 +35,7 @@ public class navMeshController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         viewAngle = spotlight.spotAngle;
         target2 = GameObject.Find("Setdestination");
-        eventSystem.SetActive(false);
+        eventSystemPillado.SetActive(false);
 
         agente = GetComponent<NavMeshAgent>();
         
@@ -112,7 +115,9 @@ public class navMeshController : MonoBehaviour
             
             slider.value = 1f;
             tehanpillado.enabled = true;
-            eventSystem.SetActive(true);
+            eventSystemContinue.SetActive(false);
+            Hud.SetActive(false);
+            eventSystemPillado.SetActive(true);
             Time.timeScale = 0;
         }
 

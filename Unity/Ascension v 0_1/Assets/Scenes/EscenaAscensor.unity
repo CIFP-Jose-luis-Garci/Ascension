@@ -13842,7 +13842,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1749326758}
-        m_MethodName: Continuar
+        m_MethodName: ContinuarStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15788,6 +15788,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   pruebas: {fileID: 0}
+  canvasStart: {fileID: 428264498}
 --- !u!4 &1749326759
 Transform:
   m_ObjectHideFlags: 0

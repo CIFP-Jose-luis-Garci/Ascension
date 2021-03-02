@@ -9,16 +9,16 @@ public class startScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        canvastart.enabled = false;
+        //canvastart.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetButtonDown("Start") && On == false)
+        /*if (Input.GetButtonDown("Start") && On == false)
         {
-            print("se esta pulsando");
+            
             canvastart.enabled = true;
             Time.timeScale = 0;
             On = true;
@@ -29,6 +29,6 @@ public class startScript : MonoBehaviour
             canvastart.enabled = false;
             Time.timeScale = 1;
             On = false;
-        }
+        }*/
     }
 }

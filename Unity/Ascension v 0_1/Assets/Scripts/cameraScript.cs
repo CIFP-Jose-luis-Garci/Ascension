@@ -22,7 +22,10 @@ public class cameraScript : MonoBehaviour
     public Slider slider;
     public Canvas tehanpillado;
     float progreso;
-    public GameObject eventSystem;
+    public GameObject eventSystemPillado;
+    public GameObject eventSystemContinue;
+    public GameObject Hud;
+
 
 
 
@@ -35,7 +38,7 @@ public class cameraScript : MonoBehaviour
         originalSpotlightColour = spotlight.color;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         viewAngle = spotlight.spotAngle;
-        eventSystem.SetActive(false);
+        eventSystemPillado.SetActive(false);
 
     }
     bool CanSeePlayer() //Metodo para ver a el personaje con el raycast y el angulo de la spotlight
@@ -116,8 +119,9 @@ public class cameraScript : MonoBehaviour
             progreso += n * Time.deltaTime;
             if (progreso > 0.99)
             {
-
-                eventSystem.SetActive(true);
+                eventSystemContinue.SetActive(false);
+                Hud.SetActive(false);
+                eventSystemPillado.SetActive(true);
                 tehanpillado.enabled = true;
                 Time.timeScale = 0;
                 

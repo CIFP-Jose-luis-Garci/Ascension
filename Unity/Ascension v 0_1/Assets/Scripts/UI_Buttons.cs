@@ -7,6 +7,9 @@ public class UI_Buttons : MonoBehaviour
 {
     public GameObject player;
     public PruebasCheckPoint pruebas;
+    public Canvas canvasStart;
+    public Canvas hud;
+
 
     // Start is called before the first frame update
     public void Start()
@@ -34,6 +37,10 @@ public class UI_Buttons : MonoBehaviour
     public void Continuar()
     {
         SceneManager.LoadScene("EscenaAscensor");
+        Time.timeScale = 1;
+        hud.enabled = true;
+        
+
     }
 
     public void Coleccionables()
@@ -44,6 +51,12 @@ public class UI_Buttons : MonoBehaviour
     public void Volveralmenu()
     {
         SceneManager.LoadScene("Escena2");
+    }
+
+    public void ContinuarStart()
+    {
+        canvasStart.enabled = false;
+        Time.timeScale = 1;
     }
 
     public void Reintentar()
