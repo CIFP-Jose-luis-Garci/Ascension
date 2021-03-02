@@ -24,6 +24,7 @@ public class navMeshController1 : MonoBehaviour
     public GameObject eventSystemPillado;
     public GameObject eventSystemContinue;
     public GameObject Hud;
+    public GameObject canvaspillado;
 
 
 
@@ -77,7 +78,10 @@ public class navMeshController1 : MonoBehaviour
                 progreso += n * Time.deltaTime;
                 if (progreso > 0.99)
                 {
+                    canvaspillado.SetActive(true);
+
                     tehanpillado.enabled = true;
+
                     //Time.timeScale = 0f; Para parar el juego, falta ver si funciona el canvas con este codigo
                 }
             }
@@ -113,6 +117,7 @@ public class navMeshController1 : MonoBehaviour
         {
             
             slider.value = 1f;
+            canvaspillado.SetActive(true);
             tehanpillado.enabled = true;
             eventSystemContinue.SetActive(false);
             Hud.SetActive(false);

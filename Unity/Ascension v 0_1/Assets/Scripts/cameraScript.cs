@@ -21,6 +21,7 @@ public class cameraScript : MonoBehaviour
     para arreglar bug de camara mirando a el suelo al hacer el lookAT*/
     public Slider slider;
     public Canvas tehanpillado;
+    public GameObject canvaspillado;
     float progreso;
     public GameObject eventSystemPillado;
     public GameObject eventSystemContinue;
@@ -123,6 +124,7 @@ public class cameraScript : MonoBehaviour
                 Hud.SetActive(false);
                 eventSystemPillado.SetActive(true);
                 tehanpillado.enabled = true;
+                canvaspillado.SetActive(true);
                 Time.timeScale = 0;
                 
             }
