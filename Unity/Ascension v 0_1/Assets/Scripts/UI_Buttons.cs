@@ -62,6 +62,13 @@ public class UI_Buttons : MonoBehaviour
         canvaspillado.enabled = true;
     }
 
+    public void ContinuarStartsinhud()
+    {
+        canvasStart.enabled = false;
+        Time.timeScale = 1;
+        
+    }
+
     public void Reintentar()
     {
         hud.SetActive(true);
