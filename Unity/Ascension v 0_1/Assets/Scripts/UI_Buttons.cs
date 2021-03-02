@@ -22,7 +22,7 @@ public class UI_Buttons : MonoBehaviour
 
     public void Salir()
     {
-         Debug.Log("QUIT!");
+         //Debug.Log("QUIT!");
          Application.Quit();
     }
 
@@ -40,6 +40,12 @@ public class UI_Buttons : MonoBehaviour
     {
         SceneManager.LoadScene("Escena4");
     }
+
+    public void Volveralmenu()
+    {
+        SceneManager.LoadScene("Escena2");
+    }
+
     public void Reintentar()
     {
         pruebas.Die();
