@@ -21,6 +21,10 @@ public class ServerScript : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     public float prueba;
 
+    [SerializeField] GameObject PressX;
+    private bool pressxcartel;
+    private bool pressxonce;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +34,9 @@ public class ServerScript : MonoBehaviour
         FinalDelNivel.SetActive(false);
         animatorPuertaCerrada.SetBool("PuertaCuarentena", false);
         usb.enabled = false;
+
+        pressxcartel = false;
+        pressxonce = false;
     }
 
     // Update is called once per frame
@@ -41,6 +48,8 @@ public class ServerScript : MonoBehaviour
        FinalNivel();
        
        //print(segundos);
+
+       DentroFueraX();
       
     }
 
@@ -54,6 +63,14 @@ public class ServerScript : MonoBehaviour
             
         }
 
+        if(target.gameObject.tag == "Player" && pressxcartel == false && pressxonce == false)
+        
+        {
+
+        pressxcartel = true;
+
+        }
+
     }
 
     void OnTriggerExit(Collider target)
@@ -64,6 +81,7 @@ public class ServerScript : MonoBehaviour
         {
 
         estaRangoServer = false;
+        pressxcartel = false;
 
         }
     }
@@ -72,13 +90,16 @@ public class ServerScript : MonoBehaviour
     void InteraccionServer()
     {
        
-        if(Input.GetButtonDown("X") && estaRangoServer == true && segundos == 0)  
+        if(Input.GetButtonDown("X") && estaRangoServer == true && segundos == 0 && pressxonce == false)  
         {
            StartCoroutine("CuentaAtras");
            audioSource.PlayOneShot(startServer, 0.7f);
             audioSource.PlayOneShot(serverAliniciar, 1f);
             luzServer.SetTrigger("ServerOn");
            USBAnim.SetActive(true);
+
+            pressxcartel = false;
+            pressxonce = true;
         }
     }  
 
@@ -112,6 +133,24 @@ public class ServerScript : MonoBehaviour
             yield return new WaitForSeconds(0.0001f);
         }
         audioSource.PlayOneShot(serverSuccess, 1f);
+    }
+
+    void DentroFueraX()
+    {
+        if (pressxcartel == true)
+        {
+        
+        PressX.SetActive(true);
+
+        }
+
+        else if(pressxcartel == false)
+        {
+
+        PressX.SetActive(false);
+
+        }
+
     }
 
   
